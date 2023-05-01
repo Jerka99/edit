@@ -156,20 +156,17 @@ header h3 {
   max-width: 311px;
   min-width: 280px;
   height: 350px;
+  border-radius: 20px;
 }
 
 #sign-background {
   width: 100%;
-  opacity: 0.8;
+  background: rgba(255,255,255,0.8);
   height: 100%;
   position: absolute;
-  background: white;
   z-index: 1;
   transition: all 0.3s ease-in-out;
 }
-
-
-
 
 
 #sign form {
@@ -180,19 +177,44 @@ header h3 {
   justify-content: space-between;
 }
 
+#change-form p{
+  margin: 0;
+  width: max-content;
+}
+
+#change-form p:nth-child(1){
+  cursor: default;
+}
+
+#change-form button {
+  cursor: pointer;
+  color: blue;
+  border: 0;
+  background: white;
+  padding: 0;
+  font-family: serif;
+  font-size: 16px;
+}
+
+#sign button[type=submit]{
+width: max-content;
+margin: 0 0 0 auto;
+}
+
+
 #sign form label{
   display: flex;
   justify-content: space-between;
 }
 
 #sign #close {
-  border-radius: 7px;
-  border: solid 1px black;
-  width: 25px;
-  height: 25px;
-  padding: 5px 6.5px;
+  border: 0;
+  background: white;
+  font-weight: bold;
+  font-size: 17px;
   cursor: pointer;
-  right: 8px;
+  right: 16px;
+  top: 15px;
   position: absolute;
 }
 

@@ -1,27 +1,19 @@
 import { Link } from "react-router-dom";
 import Bars from "../button/buttonbars";
 import { useContextComp } from "./MyContext";
-import { auth } from "../firebase/firebase";
 import { useState } from "react";
 
 export default function Navigation({sidebar, setSidebar, setDisplaySign}) {
  
 const {authUser, name, signOutFun, logInUser} = useContextComp()
-const [toggleUser, setToggleUser] = useState(false)
-
 
 const changeUser = () =>{
-  const boolean = !toggleUser
-  setToggleUser(boolean)
-  console.log(boolean)
-  if(toggleUser)
+  if(authUser.displayName == "admin")
   logInUser("antoniojerka@gmail.com", "123456")
-  else
+  else 
   logInUser("admin@gmail.com", "123456")
-
 }
 
-console.log("authuser",authUser.email == "admin@gmail.com")
 
   return (
     <>
@@ -55,9 +47,9 @@ console.log("authuser",authUser.email == "admin@gmail.com")
           <li onClick={()=>setSidebar(false)}>
             <Link to={`obavijesti`}>Obavijesti</Link>
           </li>
-          <li onClick={()=>setSidebar(false)}>
+          {authUser.displayName == "admin" && <li onClick={()=>setSidebar(false)}>
             <Link to={`unos`}>Unos</Link>
-          </li>
+          </li>}
         </ul>
       </div>
     </>

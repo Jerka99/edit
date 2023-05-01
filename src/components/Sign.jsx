@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { useContextComp } from "../MyContext";
+import { useContextComp } from "./MyContext";
 
 
 const SignIn = ({signIn, signUp, state, setDisplaySign}) => {
 
   const [user, setUser] = useState({...state});
-  const { createUser, logInUser} = useContextComp()
+  const { createUser, logInUser, authUser} = useContextComp()
 
 
   const inputFun = (e) => {
     const { name, value } = e.target;
     setUser((prev) => ({ ...prev, [name]: value }));
   };
-  console.log({user});
 
+  
   const submitFun = (e) => {
     e.preventDefault();
     if(signUp){
@@ -22,6 +22,7 @@ const SignIn = ({signIn, signUp, state, setDisplaySign}) => {
     else if(signIn){
       logInUser(user.email, user.password)
     }
+    if(authUser)
     setUser({name:"", email: "", password: "" })
   };
 
@@ -42,7 +43,15 @@ const SignIn = ({signIn, signUp, state, setDisplaySign}) => {
           />
         </label>
         })}
-        <button type="submit">Submit</button>
+        <button type="submit">{signUp ? "Create account" : "Log in"}</button>
+        {signUp && <div id="change-form"><p>Have an account?</p>
+        <button onClick={()=>setDisplaySign({signUp:false, signIn:true})}>Sign In</button>
+        </div>}
+        
+        {signIn && <div id="change-form"><p>Dont have an account?</p>
+        <button onClick={()=>setDisplaySign({signUp:true, signIn:false})}>Sign Up</button>
+        </div>}
+
       </form>
     </div></div>
   );

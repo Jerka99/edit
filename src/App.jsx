@@ -7,8 +7,9 @@ import Popis from "./components/Popis";
 import Donacije from "./components/Donacije";
 import Obavijesti from "./components/Obavijesti";
 import Unos from "./components/Unos";
-import Sign from "./components/auth/Sign";
+import Sign from "./components/Sign";
 import { auth } from "./firebase/firebase";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const [sidebar, setSidebar] = useState(false);
@@ -53,7 +54,8 @@ function App() {
             <Route path="/popis" element={<Popis />} />
             <Route path="/donacije" element={<Donacije />} />
             <Route path="/obavijesti" element={<Obavijesti />} />
-            <Route path="/unos" element={<Unos />} />
+            
+            <Route path="/unos" element={<ProtectedRoute><Unos/></ProtectedRoute>} />
           </Routes>
         </div>
       </MyContextComp>
