@@ -1,7 +1,7 @@
-import { useContextFun } from './MyContext'
+import { useContextComp } from './MyContext'
 
 const Child = () => {
-    const {count, setCount} = useContextFun()
+    const {count, setCount} = useContextComp()
 
     return (
     <div>

@@ -1,22 +1,61 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from "react";
+import {
+  onAuthStateChanged,
+  signOut,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../firebase/firebase";
 
-const MyContext = createContext()
+const MyContext = createContext();
 
-export function useContextFun(){
-    return useContext(MyContext)
+export function useContextComp() {
+  return useContext(MyContext);
 }
 
+export const MyContextComp = ({ children, checker }) => {
+  const [authUser, setAuthUser] = useState("");
+  const [name, setName] = useState("")
 
-const MyContextFun = ({children}) => {
+  useEffect(() => {
+    const filter = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthUser(user);
+      } else {
+        setAuthUser("");
+      }
+      checker(user)
+    });
+    return () => filter();
+  }, []);
 
-    const [count, setCount] = useState(10)
+  const createUser = (name, email, password) => {
+    setName(name)
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((res) => {
+       return updateProfile(auth.currentUser, { displayName: name });
+      })
+      .catch((error) => console.error(error));
+  };
 
-    return (
-    <MyContext.Provider value={{count, setCount}}>
-        {children}
+  const logInUser = (email, password) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => console.log(userCredential))
+      .catch((error) => console.error(error));
+  };
+
+  const signOutFun = () => {
+    signOut(auth)
+      .then(console.log("sucessful sign out"))
+      .catch((error) => console.error(error));
+  };
+
+  
+
+  return (
+    <MyContext.Provider value={{ signOutFun, authUser, name, createUser, logInUser }}>
+      {children}
     </MyContext.Provider>
-      
-  )
-}
-export default MyContextFun
-
+  );
+};
