@@ -10,6 +10,7 @@ header {
   background: hsla(0, 0%, 78%, 0.7);
   position: sticky;
   top: 0;
+  z-index: 1;
   height: 32px;
   padding: 0 9px;
   display: flex;
@@ -138,6 +139,7 @@ header h3 {
   transform: translate(0px);
   transition: all 0.3s ease-in-out;
   width: calc(100%);
+  padding: 30px;
 }
 
 .mainbody.active {
@@ -207,7 +209,7 @@ margin: 0 0 0 auto;
   justify-content: space-between;
 }
 
-#sign #close {
+#close {
   border: 0;
   background: white;
   font-weight: bold;
@@ -218,6 +220,15 @@ margin: 0 0 0 auto;
   position: absolute;
 }
 
+.title{
+  text-align: center;
+  margin-top: 0;
+}
+
+button{
+  cursor: pointer;
+}
+
 
 
 /* ABOUT */
@@ -225,3 +236,209 @@ margin: 0 0 0 auto;
 #about img{
   width: 100%;
 }
+
+
+
+/* PRIKAZ */
+
+.popis {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.popis .element-popisa {
+  width: 175px;
+  display: flex;
+  background: whitesmoke;
+  border: solid 1px black;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px;
+}
+
+.popis .element-popisa img {
+  width: 100%;
+  height: 125px;
+  border-radius: 9px;
+}
+
+.prikaz-zivotinje {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: calc(100vh - 32px);
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.prikaz-zivotinje div:first-child{
+  background: none;
+  border: 0;
+}
+
+.prikaz-zivotinje #left-arrow , .prikaz-zivotinje #right-arrow{
+background: none;
+border: 0;
+height: 45px;
+}
+
+
+.prikaz-zivotinje #left-arrow::after {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 3px;
+  transform: rotate(45deg) translate(2px, 8px);
+  background: white;
+}
+.prikaz-zivotinje #left-arrow::before {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 3px;
+  transform: rotate(315deg) translate(2px, -8px);
+  background: white;
+}
+
+
+.prikaz-zivotinje #right-arrow::after {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 3px;
+  transform: rotate(315deg) translate(-2px, 8px);
+  background: white;
+}
+.prikaz-zivotinje #right-arrow::before {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 3px;
+  transform: rotate(45deg) translate(-2px, -8px);
+  background: white;
+}
+
+.prikaz-zivotinje.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prikaz-zivotinje #zivotinja {
+  background: white;
+  display: grid;
+  grid-template-rows:auto auto;
+  grid-template-columns: auto auto;
+  width: 350px;
+  height: 333px;
+  position: relative;
+  border-radius: 30px;
+  border: solid 2px black;
+  padding: 8px;
+}
+
+
+
+.prikaz-zivotinje #zivotinja img {
+  width: 180px;
+  border: solid 2px black;
+  border-radius: 30px;
+}
+
+.prikaz-zivotinje #zivotinja img + div {
+  margin: 12px;
+  grid-column-start: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.prikaz-zivotinje #zivotinja img + div + div {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin: 0 14px 14px 0;
+  gap: 6px;
+}
+
+.prikaz-zivotinje #zivotinja p{
+  margin: 0;
+}
+
+
+/* UNOS */
+
+#unos {
+  display: grid;
+  grid-template-rows: auto auto auto auto auto;
+  grid-template-columns: 1fr 1fr;
+  padding: 40px;
+  background: whitesmoke;
+  border: solid 1px black;
+}
+
+#unos label{
+  display: flex;
+  flex-direction: column;
+}
+
+#unos label{
+  width: 200px;
+  margin: 10px;
+}
+
+#unos label:nth-child(2) {
+  grid-column-start: 1;
+  grid-row-start: 2;
+}
+
+#unos label:nth-child(3)  {
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+
+#unos label:nth-child(4)  {
+  grid-column-start: 2;
+  grid-row-start: 3;
+}
+
+#unos label:nth-child(5)  {
+  grid-column-start: 1;
+  grid-row-start: 3;
+}
+
+#unos label:nth-child(7)  {
+  grid-column-start: 2;
+  grid-row-start: 1;
+}
+
+#unos label input{
+  margin-top: 3px;
+}
+
+#unos label:nth-child(2) , #unos label:nth-child(3)   {
+  width: max-content;
+  display: flex;
+  align-items: flex-start;  
+}
+
+#unos label:nth-child(6) {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  grid-row-start: 4;
+  width: 100%;
+}
+
+#unos button {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  grid-row-start: 5;
+  width:100px;
+}
+

@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { MyContextComp } from "./components/MyContext";
 import Navigation from "./components/Navigation";
 import About from "./components/About";
-import Popis from "./components/Popis";
+import Popis from "./components/Popis/Popis";
 import Donacije from "./components/Donacije";
 import Obavijesti from "./components/Obavijesti";
 import Unos from "./components/Unos";

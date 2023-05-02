@@ -6,14 +6,16 @@ import { useState } from "react";
 export default function Navigation({sidebar, setSidebar, setDisplaySign}) {
  
 const {authUser, name, signOutFun, logInUser} = useContextComp()
+const [currentUser, setCurrentUser] = useState("default@gmail.com")
 
 const changeUser = () =>{
-  if(authUser.displayName == "admin")
-  logInUser("antoniojerka@gmail.com", "123456")
-  else 
-  logInUser("admin@gmail.com", "123456")
+  if(authUser.displayName !== "admin"){
+    setCurrentUser(authUser.email)
+    logInUser("admin@gmail.com", "123456")
+  }
+  else
+    logInUser(currentUser ?? "default@gmail.com", "123456")
 }
-
 
   return (
     <>

@@ -8,7 +8,7 @@ const ProtectedRoute = ({children}) => {
         return children
     }
 
-  return (null
+  return (<></>
   )
 }
 
