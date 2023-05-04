@@ -8,18 +8,14 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { db } from "../firebase/firebase";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc, deleteDoc, doc, updateDoc } from "firebase/firestore";
 
 const MyContext = createContext();
-const Base = createContext();
 
 export function useContextComp() {
   return useContext(MyContext);
 }
 
-export function useBaseContextComp() {
-  return useContext(Base);
-}
 
 export const MyContextComp = ({ children, checker }) => {
   const [authUser, setAuthUser] = useState("");
@@ -39,12 +35,15 @@ export const MyContextComp = ({ children, checker }) => {
     return () => listen();
   }, []);
 
-  const animalsCollectionRef = collection(db, "animals");
+  const collections ={
+    animalsCollectionRef:collection(db, "animals"),
+  }
+
 
 
   const getList = async () =>{
     try{
-      const data = await getDocs(animalsCollectionRef)
+      const data = await getDocs(collections.animalsCollectionRef)
       const filteredData = data.docs.map(doc=>({
         ...doc.data(),
       id: doc.id
@@ -85,7 +84,7 @@ export const MyContextComp = ({ children, checker }) => {
 
   const PostInBase = async (object) =>{
     try{
-    await addDoc(animalsCollectionRef,{...object})
+    await addDoc(collections.animalsCollectionRef,{...object})
     getList();
     }
     catch (error){
@@ -93,12 +92,34 @@ export const MyContextComp = ({ children, checker }) => {
     }
   }
 
+  const deleteAnimal = async (id) =>{
+    try{
+      const animal = doc(db, "animals", id)
+      await deleteDoc(animal)
+      getList();
+      }
+      catch (error){
+        console.error(error)
+      }
+  }
+
+  const changeAnimalInfo = async (id, object) =>{
+    try{
+      const animal = doc(db, "animals", id)
+      await updateDoc(animal, object)
+      getList();
+      }
+      catch (error){
+        console.error(error)
+      }
+  }
+
+
+
 
   return (
-    <MyContext.Provider value={{ signOutFun, authUser, name, createUser, logInUser }}>
-          <Base.Provider value={{ animalsList, PostInBase }}>
+    <MyContext.Provider value={{auth:{ signOutFun, authUser, name, createUser, logInUser }, base:{ animalsList, PostInBase, deleteAnimal, changeAnimalInfo}}}>
               {children}
-          </Base.Provider>
     </MyContext.Provider>
   );
 };

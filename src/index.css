@@ -140,6 +140,7 @@ header h3 {
   transition: all 0.3s ease-in-out;
   width: calc(100%);
   padding: 30px;
+  min-height: 100vh;
 }
 
 .mainbody.active {
@@ -258,7 +259,8 @@ button{
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 0px;
+  padding: 7px;
+  cursor: pointer;
 }
 
 .popis .element-popisa img {
@@ -269,11 +271,11 @@ button{
 
 .prikaz-zivotinje {
   display: none;
-  position: absolute;
-  width: 100%;
+  position: fixed;
   top: 0;
   left: 0;
-  height: calc(100vh - 32px);
+  bottom: 0;
+  right: 0;
   background-color: rgba(0, 0, 0, 0.9);
 }
 
@@ -325,9 +327,15 @@ height: 45px;
 }
 
 .prikaz-zivotinje.active {
+  display: block;
+}
+
+.prikaz-zivotinje #staticblock{
   display: flex;
   align-items: center;
   justify-content: center;
+  position: sticky;
+  top: 27%;
 }
 
 .prikaz-zivotinje #zivotinja {
@@ -347,6 +355,7 @@ height: 45px;
 
 .prikaz-zivotinje #zivotinja img {
   width: 180px;
+  height: 170px;
   border: solid 2px black;
   border-radius: 30px;
 }
@@ -374,7 +383,7 @@ height: 45px;
 
 /* UNOS */
 
-#unos {
+#post #unos {
   display: grid;
   grid-template-rows: auto auto auto auto auto;
   grid-template-columns: 1fr 1fr;
@@ -383,62 +392,185 @@ height: 45px;
   border: solid 1px black;
 }
 
-#unos label{
+#post #unos label{
   display: flex;
   flex-direction: column;
 }
 
-#unos label{
+#post #unos label{
   width: 200px;
   margin: 10px;
 }
 
-#unos label:nth-child(2) {
+#post #unos label:nth-child(2) {
   grid-column-start: 1;
   grid-row-start: 2;
 }
 
-#unos label:nth-child(3)  {
+#post #unos label:nth-child(2) div{
+  display: flex;
+}
+
+#post #unos label:nth-child(2) div label {
+  margin: 21px 10px;
+  display: flex;
+  width: min-content;
+  flex-direction: row;
+  align-items: center;
+}
+
+#post #unos label:nth-child(2) div label:nth-child(1) {
+margin-left: 0;
+}
+
+#post #unos label:nth-child(3)  {
   grid-column-start: 2;
   grid-row-start: 2;
 }
 
-#unos label:nth-child(4)  {
+#post #unos label:nth-child(4)  {
   grid-column-start: 2;
   grid-row-start: 3;
 }
 
-#unos label:nth-child(5)  {
+#post #unos label:nth-child(5)  {
   grid-column-start: 1;
   grid-row-start: 3;
 }
 
-#unos label:nth-child(7)  {
+#post #unos label:nth-child(7)  {
   grid-column-start: 2;
   grid-row-start: 1;
 }
 
-#unos label input{
+#post #unos label input{
   margin-top: 3px;
 }
 
-#unos label:nth-child(2) , #unos label:nth-child(3)   {
+#post #unos label:nth-child(2) , #post #unos label:nth-child(3)   {
   width: max-content;
   display: flex;
   align-items: flex-start;  
 }
 
-#unos label:nth-child(6) {
+#post #unos label:nth-child(6) {
   grid-column-start: 1;
   grid-column-end: span 2;
   grid-row-start: 4;
   width: 100%;
 }
 
-#unos button {
+#post #unos button {
   grid-column-start: 1;
   grid-column-end: span 2;
   grid-row-start: 5;
   width:100px;
 }
 
+
+
+
+/* PUT UNOS */
+
+#put{
+  width: 330px;
+}
+
+#put #unos {
+  display: grid;
+  grid-template-columns: 182px 147px;
+}
+
+#put #unos label {
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+}
+
+#put #unos label input{
+width: 100%;
+margin: 2px;
+}
+
+#put #unos label:nth-child(2){
+  grid-column-start: 1;
+  grid-row-start: 3;
+}
+
+#put #unos label:nth-child(3) div{
+  display: flex;
+  align-items: flex-end;
+}
+
+#put #unos label:nth-child(3) div label{
+margin: 0 3px;
+gap: 0;
+}
+
+#put #unos label:nth-child(3){
+  grid-column-start: 1;
+  grid-row-start: 2;
+  gap: 10px;
+}
+
+#put #unos label:nth-child(4){
+  grid-column-start: 1;
+  grid-row-start: 5;
+}
+
+#put #unos label:nth-child(4) input, #put #unos label:nth-child(9) input{
+  width: min-content;
+}
+
+
+#put #unos label:nth-child(5){
+  grid-column-start: 2;
+  grid-row-start: 3;
+}
+
+#put #unos label:nth-child(6){
+  grid-column-start: 1;
+  grid-row-start: 4;
+}
+
+#put #unos label:nth-child(7){
+  grid-column-start: 1;
+  grid-row-start: 6;
+  }
+
+#put #unos label:nth-child(7) textarea{
+height: 20px;
+}
+
+#put #unos label:nth-child(9) {
+  grid-row-start: 5;
+  grid-column-start: 1;
+  left: 79px;
+  position: absolute;
+}
+
+#put #unos button[type="submit"] {
+  grid-column-start: 2;
+  grid-row-start: 6;
+  width: fit-content;
+  bottom: 21px;
+  position: absolute;
+}
+
+
+#change-animal-info-button {
+  grid-column-start: 2;
+  grid-row-start: 7;
+  width: fit-content;
+  position: absolute;
+  right: 10px;
+  bottom: 21px;
+}
+
+#delete-animal {
+  grid-column-start: 2;
+  grid-row-start: 5;
+  width: fit-content;
+  position: absolute;
+  right: 11px;
+}

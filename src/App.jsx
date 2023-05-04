@@ -55,7 +55,7 @@ function App() {
             <Route path="/donacije" element={<Donacije />} />
             <Route path="/obavijesti" element={<Obavijesti />} />
             
-            <Route path="/unos" element={<ProtectedRoute><Unos/></ProtectedRoute>} />
+            <Route path="/unos" element={<ProtectedRoute><Unos prop={"post"}/></ProtectedRoute>} />
           </Routes>
         </div>
       </MyContextComp>

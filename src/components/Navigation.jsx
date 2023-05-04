@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function Navigation({sidebar, setSidebar, setDisplaySign}) {
  
-const {authUser, name, signOutFun, logInUser} = useContextComp()
+const {authUser, name, signOutFun, logInUser} = useContextComp().auth
 const [currentUser, setCurrentUser] = useState("default@gmail.com")
 
 const changeUser = () =>{

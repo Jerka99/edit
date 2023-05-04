@@ -5,7 +5,7 @@ import { useContextComp } from "./MyContext";
 const SignIn = ({signIn, signUp, state, setDisplaySign}) => {
 
   const [user, setUser] = useState({...state});
-  const { createUser, logInUser, authUser} = useContextComp()
+  const { createUser, logInUser, authUser} = useContextComp().auth
 
 
   const inputFun = (e) => {
