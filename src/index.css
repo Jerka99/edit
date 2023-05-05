@@ -344,7 +344,7 @@ height: 45px;
   grid-template-rows:auto auto;
   grid-template-columns: auto auto;
   width: 350px;
-  height: 333px;
+  min-height: 333px;
   position: relative;
   border-radius: 30px;
   border: solid 2px black;
@@ -376,10 +376,11 @@ height: 45px;
   gap: 6px;
 }
 
-.prikaz-zivotinje #zivotinja p{
+.prikaz-zivotinje #zivotinja p {
   margin: 0;
+  word-wrap: break-word;
+  max-width: 170px;
 }
-
 
 /* UNOS */
 
@@ -552,19 +553,10 @@ height: 20px;
 #put #unos button[type="submit"] {
   grid-column-start: 2;
   grid-row-start: 6;
-  width: fit-content;
   bottom: 21px;
-  position: absolute;
-}
-
-
-#change-animal-info-button {
-  grid-column-start: 2;
-  grid-row-start: 7;
-  width: fit-content;
   position: absolute;
   right: 10px;
-  bottom: 21px;
+  width: max-content;
 }
 
 #delete-animal {
@@ -573,4 +565,33 @@ height: 20px;
   width: fit-content;
   position: absolute;
   right: 11px;
+}
+
+#filtri {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-around;
+  margin: 20px 0px 30px;
+}
+
+#filters-holder{
+  display: flex;
+  gap: 30px;
+  flex-direction: row;
+}
+
+#filtri input[type="text"]{
+  max-height: 20px;
+}
+
+#filter{
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+}
+
+#filter label{
+  display: flex;
+  justify-content: space-between;
 }

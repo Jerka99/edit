@@ -37,19 +37,19 @@ const changeUser = () =>{
      
       <div id="sidebar" className={sidebar ? "active" : ""}>
         <ul>
-          <li onClick={()=>setSidebar(false)}>
+          <li>
             <Link to={`about`}>About</Link>
           </li>
-          <li onClick={()=>setSidebar(false)}>
+          <li>
             <Link to={`popis`}>Popis</Link>
           </li>
-          <li onClick={()=>setSidebar(false)}>
+          <li>
             <Link to={`donacije`}>Donacije</Link>
           </li>
-          <li onClick={()=>setSidebar(false)}>
+          <li>
             <Link to={`obavijesti`}>Obavijesti</Link>
           </li>
-          {authUser.displayName == "admin" && <li onClick={()=>setSidebar(false)}>
+          {authUser.displayName == "admin" && <li>
             <Link to={`unos`}>Unos</Link>
           </li>}
         </ul>

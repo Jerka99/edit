@@ -3,28 +3,31 @@ import { useContextComp } from "./MyContext"
 
 const Unos = ({setChange, prop, vrsta, ime, slika, godine, cip, opis, pregled, udomljen, id}) => {
 const {PostInBase, deleteAnimal, changeAnimalInfo} = useContextComp().base;
-const [UnosState, setUnosState] = useState({ime:ime ?? "", vrsta:vrsta ?? "", cip:cip ?? "" ,slika:slika ?? "", pregled:pregled ?? "", godine:godine ?? "", opis:opis ?? "", udomljen:udomljen ?? ""})
+const [UnosState, setUnosState] = useState({ime:ime ?? "", vrsta:vrsta ?? "", cip:cip ?? "" ,slika:slika ?? "", pregled:pregled ?? "", godine:godine ?? "", opis:opis ?? "", udomljen:udomljen ?? false})
 
 const unosFun = (e) =>{
-const {name, value} = e.target
-setUnosState(prev=>({...prev,[name]:value}))
+  const {name, value} = e.target
+  setUnosState(prev=>({...prev,[name]:value}))
 
-if(e.target.name == "cip" || e.target.name == "udomljen"){
-setUnosState(prev=>({...prev,[e.target.name]:!UnosState[e.target.name]}))
-}
+  if(e.target.name == "cip" || e.target.name == "udomljen"){
+    setUnosState(prev=>({...prev,[e.target.name]:!UnosState[e.target.name]}))
+    }
 }
 
 const handleSubmit = (e) =>{
-  e.preventDefault();
-  if(prop == "post"){
-  PostInBase(UnosState)
-  }
-  else {
-  changeAnimalInfo(id,{...UnosState})
-}
-setUnosState({ime:"", vrsta:"", cip:"" ,slika:"", pregled:"", godine:"", opis:"", udomljen:false})
+    e.preventDefault();
+    if(UnosState.godine > 0){
+    if(prop == "post"){
+      PostInBase(UnosState)
+      setUnosState({ime:"", vrsta:"", cip:"" ,slika:"", pregled:"", godine:"", opis:"", udomljen:false})
+      }
+    else {
+      changeAnimalInfo(id,{...UnosState})
+      setTimeout(()=>setChange(prev=>!prev) ,200); 
+      }}
+    } 
 
-}
+
   return (
     <div id={prop}>
       {prop == "post" && <h2 className='title'>Unos</h2> }
@@ -52,15 +55,15 @@ setUnosState({ime:"", vrsta:"", cip:"" ,slika:"", pregled:"", godine:"", opis:""
 
         <label >Godine<input required={prop == "post" ? true : false} min={0} onChange={unosFun} value={UnosState.godine} type="number" name="godine"/></label>
 
-        <label >Opis<textarea onChange={unosFun} value={UnosState.opis} name="opis" id="" cols="30" rows="10"></textarea></label>
+        <label >Opis<textarea onChange={unosFun} value={UnosState.opis} name="opis" id="" cols="30" rows="10" maxLength="50"></textarea></label>
 
         <label >Slika:<input placeholder="URL" onChange={unosFun} value={UnosState.slika} type="text" name='slika' /></label>
         
         {prop == "put" &&<label >Udomljen<input onChange={unosFun} value={UnosState.udomljen} checked={UnosState.udomljen} type="checkbox" name='udomljen' /></label>}
 
-        <button type='submit'>Spremi</button>
+        {prop == "post" && <button type='submit'>Spremi</button>}
         {prop == "put" && <button id="delete-animal" onClick={()=>deleteAnimal(id)}>Izbriši</button>}
-        {prop == "put" &&<button id="change-animal-info-button" onClick={()=>setChange(prev=>!prev)}>Provjera</button>}
+        {prop == "put" &&<button id="change-animal-info-button" type="submit" >Spremi i provjeri</button>}
 
       </form>
     </div>
