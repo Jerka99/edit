@@ -50,7 +50,7 @@ function App() {
         />
         <div className={`mainbody ${sidebar ? "active" : ""}`}>
           <Routes>
-            <Route path="/about" element={<About />} />
+            <Route path="/" element={<About />} />
             <Route path="/popis" element={<Popis />} />
             <Route path="/donacije" element={<Donacije />} />
             <Route path="/obavijesti" element={<Obavijesti />} />

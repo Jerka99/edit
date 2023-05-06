@@ -7,7 +7,7 @@ body {
 }
 
 header {
-  background: hsla(0, 0%, 78%, 0.7);
+  background: whitesmoke;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -64,10 +64,11 @@ header h3 {
 #sidebar {
   width: 0px;
   height: -webkit-fill-available;
-  background-color: rgba(200, 200, 200, 0.7);
+  background-color: whitesmoke;
   position: fixed;
   left: 0;
   transition: all 0.3s ease-in-out;
+  border-right: solid 1px;
   opacity: 0;
   top: 32px;
   visibility: hidden;
@@ -141,6 +142,11 @@ header h3 {
   width: calc(100%);
   padding: 30px;
   min-height: 100vh;
+}
+
+.mainbody #popis-box{
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .mainbody.active {
@@ -247,7 +253,7 @@ button{
   flex-direction: row;
   flex-wrap: wrap;
   gap: 30px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .popis .element-popisa {
@@ -391,6 +397,8 @@ height: 45px;
   padding: 40px;
   background: whitesmoke;
   border: solid 1px black;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 #post #unos label{
@@ -569,6 +577,7 @@ height: 20px;
 
 #filtri {
   display: flex;
+  flex-wrap: wrap;
   gap: 30px;
   align-items: center;
   justify-content: space-around;
@@ -594,4 +603,95 @@ height: 20px;
 #filter label{
   display: flex;
   justify-content: space-between;
+}
+
+
+/* OBAVIJEST */
+
+#obavijest-admin {
+  display: grid;
+  grid-template-columns: minmax(100px, 2fr) 3fr;
+  margin: 0 auto 20px;
+  align-items: center;
+  min-height: 280px;
+  justify-items: center;
+  max-width: 1000px;
+}
+
+#obavijest-admin form {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px black;
+  padding: 10px;
+  border-radius: 10px;
+  align-items: flex-end;
+}
+
+#show-noti {
+  width: 40%;
+  max-width: 120px;
+  min-width: 70px;
+  margin: 0 auto;
+}
+
+
+#obavijest-admin form textarea{
+max-width:380px ;
+max-height: 250px;
+min-width: 210px;
+min-height: 40px;
+}
+
+#obavijest-admin form label{
+  width: 100%;
+  }  
+
+#obavijest-admin form input[type="text"]{
+width: 100%;
+}  
+
+#obavijest-admin form h4{
+margin: 0;
+}
+  
+#notification-block {
+  border: solid 1px;
+  background: whitesmoke;
+  max-width: 1000px;
+  margin: 10px auto;
+}
+
+#notification-block div {
+  display: flex;
+  min-width: 100%;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#important {
+  background: red;
+  border-bottom: solid 1px black;
+}
+
+#not-important {
+  background: lightblue;
+  border-bottom: solid 1px black;
+}
+
+#notification-block h4{
+  padding: 10px;
+  margin: 0;
+}
+
+#notification-block p{
+  background: whitesmoke;
+  margin: 0;
+  padding: 25px;
+}
+
+#notification-block button{
+  position: relative;
+  left: calc(100% - 61px);
+  margin: 5px;
 }

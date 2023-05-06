@@ -5,7 +5,7 @@ import { useContextComp } from '../MyContext';
 const PrikazJednogBloka = ({id, vrsta ,setChange, ime, slika, godine, udomljen, cip, opis, setToggleAnimalInfo, toggleAnimalInfo, indexChanger, newIndex }) => {
 
     const {authUser} = useContextComp().auth;
-    const {changeAnimalInfo} = useContextComp().base;
+    const {changeInfo} = useContextComp().base;
 
     
   return (
@@ -27,7 +27,7 @@ const PrikazJednogBloka = ({id, vrsta ,setChange, ime, slika, godine, udomljen, 
   <p>Opis:{opis}</p>
   </div>
   <div>
-      <button disabled={udomljen ? true : false} onClick={()=>changeAnimalInfo(id, {udomljen:true})}>{udomljen ? "Udomljen" : "Udomi"}</button>
+      <button disabled={udomljen ? true : false} onClick={()=>changeInfo(id, {udomljen:true}, "animals")}>{udomljen ? "Udomljen" : "Udomi"}</button>
       {authUser.displayName == "admin" && <button onClick={()=>setChange(prev=>!prev)}>Uredi</button>}
     </div>
     </div>

@@ -22,6 +22,7 @@ export const MyContextComp = ({ children, checker }) => {
   const [name, setName] = useState("") // sprema ime prijavljenog korisnika jer
       	                                      // updateProfile ne triggera onAuthStateChanged
   const [animalsList, setAnimalsList] = useState([])
+  const [notifications, setNotificationList] = useState([])
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
@@ -37,6 +38,7 @@ export const MyContextComp = ({ children, checker }) => {
 
   const collections ={
     animalsCollectionRef:collection(db, "animals"),
+    notificationsCollectionRef:collection(db, "notifications")
   }
 
 
@@ -48,6 +50,14 @@ export const MyContextComp = ({ children, checker }) => {
         ...doc.data(),
       id: doc.id
     }))
+
+    const notificationsData = await getDocs(collections.notificationsCollectionRef)
+      const filteredNotifications = notificationsData.docs.map(doc=>({
+        ...doc.data(),
+      id: doc.id
+    }))
+
+     setNotificationList(filteredNotifications)
      setAnimalsList(filteredData)
     }
     catch (error){
@@ -59,7 +69,6 @@ export const MyContextComp = ({ children, checker }) => {
     getList()
   },[])
 
-  console.log(animalsList)
 
   const createUser = (name, email, password) => {
     setName(name)
@@ -82,20 +91,19 @@ export const MyContextComp = ({ children, checker }) => {
       .catch((error) => console.error(error));
   };
 
-  const PostInBase = async (object) =>{
+  const postInBase = async (object, collection) =>{
     try{
-    await addDoc(collections.animalsCollectionRef,{...object})
+    await addDoc(collections[collection],{...object})
     getList();
     }
     catch (error){
       console.error(error)
     }
   }
-
-  const deleteAnimal = async (id) =>{
-    try{
-      const animal = doc(db, "animals", id)
-      await deleteDoc(animal)
+  const deleteFromBase = async (id, collectionName) =>{
+    try{console.log("colname",collectionName)
+      const element = doc(db, collectionName, id)
+      await deleteDoc(element)
       getList();
       }
       catch (error){
@@ -103,10 +111,10 @@ export const MyContextComp = ({ children, checker }) => {
       }
   }
 
-  const changeAnimalInfo = async (id, object) =>{
+  const changeInfo = async (id, object, collectionName) =>{
     try{
-      const animal = doc(db, "animals", id)
-      await updateDoc(animal, object)
+      const element = doc(db, collectionName, id)
+      await updateDoc(element, object)
       getList();
       }
       catch (error){
@@ -118,7 +126,9 @@ export const MyContextComp = ({ children, checker }) => {
 
 
   return (
-    <MyContext.Provider value={{auth:{ signOutFun, authUser, name, createUser, logInUser }, base:{ animalsList, PostInBase, deleteAnimal, changeAnimalInfo}}}>
+    <MyContext.Provider value={{auth:{ signOutFun, authUser, name, createUser, logInUser },
+                                base:{ animalsList, postInBase, deleteFromBase, changeInfo},
+                                notifications:{notifications}}}>
               {children}
     </MyContext.Provider>
   );

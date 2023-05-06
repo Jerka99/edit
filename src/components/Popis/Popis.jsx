@@ -43,7 +43,7 @@ const Popis = () => {
 
 
   return (
-    <div>
+    <div id="popis-box">
       <h2 className="title">Popis životinja</h2>
       <div id="filtri">
       <label><h3>Tražilica</h3><input type="text" name="text" value={filter.text} onChange={filterFun} /></label>
