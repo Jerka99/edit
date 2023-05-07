@@ -23,6 +23,7 @@ export const MyContextComp = ({ children, checker }) => {
       	                                      // updateProfile ne triggera onAuthStateChanged
   const [animalsList, setAnimalsList] = useState([])
   const [notifications, setNotificationList] = useState([])
+  const [donations, setDonationList] = useState([])
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
@@ -38,15 +39,16 @@ export const MyContextComp = ({ children, checker }) => {
 
   const collections ={
     animalsCollectionRef:collection(db, "animals"),
-    notificationsCollectionRef:collection(db, "notifications")
+    notificationsCollectionRef:collection(db, "notifications"),
+    donationsCollectionReef:collection(db, "donacije")
   }
 
 
 
   const getList = async () =>{
     try{
-      const data = await getDocs(collections.animalsCollectionRef)
-      const filteredData = data.docs.map(doc=>({
+      const animalsData = await getDocs(collections.animalsCollectionRef)
+      const filteredAnimals = animalsData.docs.map(doc=>({
         ...doc.data(),
       id: doc.id
     }))
@@ -57,8 +59,15 @@ export const MyContextComp = ({ children, checker }) => {
       id: doc.id
     }))
 
+    const donationsData = await getDocs(collections.donationsCollectionReef)
+      const filteredDonations = donationsData.docs.map(doc=>({
+        ...doc.data(),
+      id: doc.id
+    }))
+
      setNotificationList(filteredNotifications)
-     setAnimalsList(filteredData)
+     setAnimalsList(filteredAnimals)
+     setDonationList(filteredDonations)
     }
     catch (error){
       console.error(error)
@@ -128,7 +137,8 @@ export const MyContextComp = ({ children, checker }) => {
   return (
     <MyContext.Provider value={{auth:{ signOutFun, authUser, name, createUser, logInUser },
                                 base:{ animalsList, postInBase, deleteFromBase, changeInfo},
-                                notifications:{notifications}}}>
+                                notifications:{notifications},
+                                donations:{donations}}}>
               {children}
     </MyContext.Provider>
   );

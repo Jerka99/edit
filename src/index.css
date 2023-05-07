@@ -142,6 +142,7 @@ header h3 {
   width: calc(100%);
   padding: 30px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .mainbody #popis-box{
@@ -613,18 +614,32 @@ height: 20px;
   grid-template-columns: minmax(100px, 2fr) 3fr;
   margin: 0 auto 20px;
   align-items: center;
-  min-height: 280px;
   justify-items: center;
   max-width: 1000px;
+  transition: all 0.3s ease-in-out;
+  min-height: 0;
+}
+
+#obavijest-admin.active{
+  min-height: 280px;
 }
 
 #obavijest-admin form {
   display: flex;
+  position: absolute;
   flex-direction: column;
   border: solid 1px black;
   padding: 10px;
   border-radius: 10px;
   align-items: flex-end;
+  transform: translate(100vw, 0px);
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+#obavijest-admin form.active {
+  transform: translate(0px, 0px);
+  position: relative ;
 }
 
 #show-noti {
@@ -694,4 +709,12 @@ margin: 0;
   position: relative;
   left: calc(100% - 61px);
   margin: 5px;
+}
+
+
+
+/* DONACIJE */
+
+#donacije table tr{
+text-align: center;
 }

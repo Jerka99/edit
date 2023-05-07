@@ -49,14 +49,14 @@ const Obavijesti = () => {
 
   return (
     <div>
-      {authUser.displayName == "admin" && <div id="obavijest-admin">
+      {authUser.displayName == "admin" && <div id="obavijest-admin" className={noti ? "active" : ""}>
       <button id="show-noti" onClick={()=>newNoti(prev=>!prev)}>Nova obavijest</button> 
-      {noti && <form onSubmit={handleSubmit}>
+      <form className={noti ? "active" : ""} onSubmit={handleSubmit}>
       <label><h4>Naslov</h4><input required type="text" maxLength="20" name="naslov" value={notificationState.naslov} onChange={createNotification}/></label>
       <label><h4>Tekst</h4><textarea required cols="30" rows="10" maxLength="200" name="tekst" value={notificationState.tekst} onChange={createNotification}></textarea></label>
       <label>Važno <input type="checkbox" name="vazno" value={notificationState.vazno} checked={notificationState.vazno} onChange={createNotification}/></label>
       <button type="submit">Spremi</button>
-    </form>}</div>}
+    </form></div>}
 
         <h2 className='title'>Obavijesti</h2> 
 
