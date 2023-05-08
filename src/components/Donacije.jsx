@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useContextComp } from './MyContext';
 import DonationsTable from './DonationsTable';
+import capitalize from './capitalize';
 
 const Donacije = () => {
 
     const {authUser} = useContextComp().auth;
-    const {postInBase, deleteFromBase} = useContextComp().base;
+    const {postInBase} = useContextComp().base;
     const {donations} = useContextComp().donations;
     const [donationState, setDonationState] = useState({tip:"", vrijednost:"", opis:"", kategorija:""})
     const [block, toggleBlock] = useState(false)
@@ -13,7 +14,8 @@ const Donacije = () => {
     console.log(donations)
 
     const tip =["hrana", "lijekovi", "igračke", "vet. troškovi"]
-      
+    const kategorija = ["trazimo", "nudi se", "donirano"]
+    
       
      
 
@@ -26,12 +28,15 @@ console.log(tip)
   }
 
   const sendInBase = (e) =>{
+    console.log("eeee")
     e.preventDefault();
-    if(donationState.vrijednost > 1){
-      postInBase(donationState, "donationsCollectionReef")
+    if(donationState.vrijednost >= 1 ){
+      postInBase(donationState, "donationsCollectionRef")
+      setDonationState({tip:"", vrijednost:"", opis:"", kategorija:""})
     }
 
   }
+
 
   console.log(donationState)
 
@@ -41,19 +46,18 @@ console.log(tip)
       <button onClick={()=>toggleBlock(prev=>!prev)}>Nova donacija</button>
       {block && <form onSubmit={sendInBase}>
       <h4>{authUser.displayName == "admin" ? "Tražimo" : "Nudi se"}</h4>
-      <label>Tip <select required name='tip' onChange={donateForm}><option value="">Izaberi</option>
+      <label>Tip <select required name='tip' value={donationState.tip} onChange={donateForm}><option value="">Izaberi</option>
         {tip.map((element)=>{return<option key={element} value={element}>{element}</option>})}</select> </label>
-      <label>Iznos<input name="vrijednost" value={donationState.vrijednost} onChange={donateForm} required type="number" min={1} /></label>
-      <label>Opis<input name="opis" value={donationState.opis} onChange={donateForm} type="text" /></label>
+      <label>Iznos <input name="vrijednost" value={donationState.vrijednost} onChange={donateForm} required type="number" min={1} /></label>
+      <label>Opis <input name="opis" value={donationState.opis} onChange={donateForm} type="text" /></label>
       <button type='submit'>Pošalji</button>
       </form>
       }
       </div>
-
-      <DonationsTable donations={donations} kategorija={"trazimo"}/>
-      <DonationsTable donations={donations} kategorija={"nudi se"}/>
-      <DonationsTable donations={donations} kategorija={"donirano"}/>
-
+      
+      {kategorija.map((el)=>{console.log(el)
+        return <DonationsTable key={el} donations={donations} kategorija={el} />
+      })}
      
     </div>
   )

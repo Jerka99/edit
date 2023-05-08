@@ -40,7 +40,8 @@ export const MyContextComp = ({ children, checker }) => {
   const collections ={
     animalsCollectionRef:collection(db, "animals"),
     notificationsCollectionRef:collection(db, "notifications"),
-    donationsCollectionReef:collection(db, "donacije")
+    donationsCollectionRef:collection(db, "donations"),
+    contactCollectionRef:collection(db, "contact")
   }
 
 
@@ -59,7 +60,7 @@ export const MyContextComp = ({ children, checker }) => {
       id: doc.id
     }))
 
-    const donationsData = await getDocs(collections.donationsCollectionReef)
+    const donationsData = await getDocs(collections.donationsCollectionRef)
       const filteredDonations = donationsData.docs.map(doc=>({
         ...doc.data(),
       id: doc.id
@@ -110,7 +111,7 @@ export const MyContextComp = ({ children, checker }) => {
     }
   }
   const deleteFromBase = async (id, collectionName) =>{
-    try{console.log("colname",collectionName)
+    try{
       const element = doc(db, collectionName, id)
       await deleteDoc(element)
       getList();

@@ -28,8 +28,8 @@ const SignIn = ({signIn, signUp, state, setDisplaySign}) => {
 
   return (<div id="sign-background">
     <div id="sign">
-      <button id="close" onClick={()=>setDisplaySign({signUp:false, signIn:false})}>X</button>
-      {signIn ? <p>Log in</p> : <p>Create account</p>}
+      <button id="close" onClick={()=>setDisplaySign({signUp:false, signIn:false})}>✖</button>
+      {signIn ? <p>Prijavi se</p> : <p>Kreiraj Račun</p>}
       <form onSubmit={submitFun}>
         {Object.keys({...state}).map(element => {
          return <label key={element}>
@@ -43,13 +43,13 @@ const SignIn = ({signIn, signUp, state, setDisplaySign}) => {
           />
         </label>
         })}
-        <button type="submit">{signUp ? "Create account" : "Log in"}</button>
-        {signUp && <div id="change-form"><p>Have an account?</p>
-        <button onClick={()=>setDisplaySign({signUp:false, signIn:true})}>Sign In</button>
+        <button type="submit">{signUp ? "Kreiraj Račun" : "Prijavi se"}</button>
+        {signUp && <div id="change-form"><p>Već imate račun?</p>
+        <button onClick={()=>setDisplaySign({signUp:false, signIn:true})}>Prijavi se</button>
         </div>}
         
-        {signIn && <div id="change-form"><p>Dont have an account?</p>
-        <button onClick={()=>setDisplaySign({signUp:true, signIn:false})}>Sign Up</button>
+        {signIn && <div id="change-form"><p>Nemate Račun?</p>
+        <button onClick={()=>setDisplaySign({signUp:true, signIn:false})}>Napravi Račun</button>
         </div>}
 
       </form>

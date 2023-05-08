@@ -13,7 +13,7 @@ const PrikazJednogBloka = ({id, vrsta ,setChange, ime, slika, godine, udomljen, 
       <div id='staticblock'>
     <button onClick={()=>indexChanger(newIndex-1)} id='left-arrow'></button>
     <div id='zivotinja'>
-      <button id='close' onClick={()=>setToggleAnimalInfo(false)}>X</button>
+      <button id='close' onClick={()=>setToggleAnimalInfo(false)}>✖</button>
   
   <img src={slika} onError={({currentTarget})=>{
   currentTarget.onerror = null;

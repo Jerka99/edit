@@ -142,7 +142,7 @@ header h3 {
   width: calc(100%);
   padding: 30px;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .mainbody #popis-box{
@@ -173,7 +173,7 @@ header h3 {
   width: 100%;
   background: rgba(255,255,255,0.8);
   height: 100%;
-  position: absolute;
+  position: fixed;
   z-index: 1;
   transition: all 0.3s ease-in-out;
 }
@@ -245,7 +245,65 @@ button{
   width: 100%;
 }
 
+#about #lorem1{
+  margin: 50px 0;
+  background: whitesmoke;
+  padding: 10px;
+}
 
+#about #location{
+  padding: 12px;
+  background: whitesmoke;
+}
+
+
+#about #form form {
+  display: flex;
+  flex-direction: column;
+  padding: 35px;
+}
+
+
+#about #form {
+  background: whitesmoke;
+  margin: 50px 0;
+  padding: 30px;
+  margin-bottom: 500px;
+}
+
+#about #form form input, #about #form form textarea {
+  margin-bottom: 30px;
+}
+
+#about #form form textarea {
+  height: 100px;
+}
+
+
+#about #form form button {
+  display: block;
+  width: max-content;
+  margin: 0 auto;
+}
+
+
+#about footer {
+  background: black;
+  position: absolute;
+  color: white;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 30px;
+}
+
+footer h2 + div{
+  display: flex;
+  flex-direction: row;
+  gap: 25vw;
+  padding: 0 30px;
+}
 
 /* PRIKAZ */
 
@@ -715,6 +773,58 @@ margin: 0;
 
 /* DONACIJE */
 
+#donacije{
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+#donacije div:first-child{
+  background: whitesmoke;
+  padding: 20px;
+  border: solid 1px;
+  border-radius: 12px;
+  margin-bottom: 100px;
+}
+
+#donacije form label{
+margin: 0 5px;
+}
+
+#donacije div:first-child h4{
+text-transform: uppercase;
+}
+
 #donacije table tr{
 text-align: center;
+}
+
+#tables{
+  border: solid 2px gray;
+  padding: 12px;
+  margin: 30px 0;
+}
+
+table{
+  display: grid;
+  margin: 30px 0;
+}
+
+thead tr {
+  display: grid;
+  grid-template-columns: 107px 107px 33vw auto auto;
+  width: 100%;
+}
+
+tbody tr {
+  display: grid;
+  grid-template-columns: 107px 107px 33vw fit-content(50%) fit-content(50%);
+  width: 100%;
+}
+
+tr td{
+  border: solid 1px;
+}
+
+tr th{
+  border: solid 1px;
 }
