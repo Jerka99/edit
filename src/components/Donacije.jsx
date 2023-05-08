@@ -13,7 +13,7 @@ const Donacije = () => {
 
     console.log(donations)
 
-    const tip =["hrana", "lijekovi", "igračke", "vet. troškovi"]
+    const tip =["hrana", "lijekovi", "igračke", "vet.troškovi"]
     const kategorija = ["trazimo", "nudi se", "donirano"]
     
       
@@ -44,9 +44,10 @@ console.log(tip)
     <div id='donacije'>
       <div>
       <button onClick={()=>toggleBlock(prev=>!prev)}>Nova donacija</button>
-      {block && <form onSubmit={sendInBase}>
       <h4>{authUser.displayName == "admin" ? "Tražimo" : "Nudi se"}</h4>
-      <label>Tip <select required name='tip' value={donationState.tip} onChange={donateForm}><option value="">Izaberi</option>
+      {block && <form onSubmit={sendInBase}>
+      
+      <label>Tip  <select required name='tip' value={donationState.tip} onChange={donateForm}><option value="">Izaberi</option>
         {tip.map((element)=>{return<option key={element} value={element}>{element}</option>})}</select> </label>
       <label>Iznos <input name="vrijednost" value={donationState.vrijednost} onChange={donateForm} required type="number" min={1} /></label>
       <label>Opis <input name="opis" value={donationState.opis} onChange={donateForm} type="text" /></label>

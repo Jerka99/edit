@@ -29,7 +29,7 @@ header h3 {
   margin: 0;
 }
 
-.user-changer{
+.user-changer {
   width: 40px;
   height: 18px;
   border: solid 1px;
@@ -40,7 +40,7 @@ header h3 {
   cursor: pointer;
 }
 
-.user-changer::after{
+.user-changer::after {
   content: "";
   width: 14px;
   height: 14px;
@@ -50,7 +50,7 @@ header h3 {
   transition: all 0.3s ease-in-out;
 }
 
-.user-changer.active::after{
+.user-changer.active::after {
   content: "";
   width: 14px;
   height: 14px;
@@ -60,6 +60,9 @@ header h3 {
   transition: all 0.3s ease-in-out;
 }
 
+.user-changer + button {
+  max-height: 21px;
+}
 
 #sidebar {
   width: 0px;
@@ -145,7 +148,7 @@ header h3 {
   overflow: hidden;
 }
 
-.mainbody #popis-box{
+.mainbody #popis-box {
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -154,7 +157,6 @@ header h3 {
   transform: translate(200px, 0);
   width: calc(100% - 200px);
 }
-
 
 #sign {
   background: white;
@@ -171,13 +173,12 @@ header h3 {
 
 #sign-background {
   width: 100%;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.8);
   height: 100%;
   position: fixed;
   z-index: 1;
   transition: all 0.3s ease-in-out;
 }
-
 
 #sign form {
   display: flex;
@@ -187,12 +188,12 @@ header h3 {
   justify-content: space-between;
 }
 
-#change-form p{
+#change-form p {
   margin: 0;
   width: max-content;
 }
 
-#change-form p:nth-child(1){
+#change-form p:nth-child(1) {
   cursor: default;
 }
 
@@ -206,13 +207,12 @@ header h3 {
   font-size: 16px;
 }
 
-#sign button[type=submit]{
-width: max-content;
-margin: 0 0 0 auto;
+#sign button[type="submit"] {
+  width: max-content;
+  margin: 0 0 0 auto;
 }
 
-
-#sign form label{
+#sign form label {
   display: flex;
   justify-content: space-between;
 }
@@ -228,57 +228,62 @@ margin: 0 0 0 auto;
   position: absolute;
 }
 
-.title{
+.title {
   text-align: center;
   margin-top: 0;
 }
 
-button{
+button {
   cursor: pointer;
 }
 
-
-
 /* ABOUT */
 
-#about img{
+#about img {
   width: 100%;
 }
 
-#about #lorem1{
-  margin: 50px 0;
+#about #lorem1 {
   background: whitesmoke;
   padding: 10px;
+  max-width: 1000px;
+  margin: 50px auto;
 }
 
-#about #location{
+#about #location {
   padding: 12px;
   background: whitesmoke;
+  max-width: 1000px;
+  margin: 0 auto;
 }
-
 
 #about #form form {
   display: flex;
   flex-direction: column;
-  padding: 35px;
 }
-
 
 #about #form {
   background: whitesmoke;
-  margin: 50px 0;
   padding: 30px;
-  margin-bottom: 500px;
+  max-width: 1000px;
+  margin: 50px auto;
 }
 
-#about #form form input, #about #form form textarea {
-  margin-bottom: 30px;
+#about #form form label {
+  width: 72%;
+  margin: 0 auto;
+}
+
+#about #form form input,
+#about #form form textarea {
+  width: 70%;
+  margin: 30px auto;
+  min-width: 210px;
 }
 
 #about #form form textarea {
   height: 100px;
 }
-
 
 #about #form form button {
   display: block;
@@ -286,19 +291,17 @@ button{
   margin: 0 auto;
 }
 
-
 #about footer {
   background: black;
-  position: absolute;
+  position: relative;
   color: white;
-  width: 100%;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100vw;
+  left: -30px;
+  bottom: -30px;
   padding: 30px;
 }
 
-footer h2 + div{
+footer h2 + div {
   display: flex;
   flex-direction: row;
   gap: 25vw;
@@ -312,7 +315,9 @@ footer h2 + div{
   flex-direction: row;
   flex-wrap: wrap;
   gap: 30px;
-  justify-content: flex-start;
+  justify-content: center;
+  max-width: 81%;
+  margin: 0 auto;
 }
 
 .popis .element-popisa {
@@ -344,17 +349,17 @@ footer h2 + div{
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-.prikaz-zivotinje div:first-child{
+.prikaz-zivotinje div:first-child {
   background: none;
   border: 0;
 }
 
-.prikaz-zivotinje #left-arrow , .prikaz-zivotinje #right-arrow{
-background: none;
-border: 0;
-height: 45px;
+.prikaz-zivotinje #left-arrow,
+.prikaz-zivotinje #right-arrow {
+  background: none;
+  border: 0;
+  height: 45px;
 }
-
 
 .prikaz-zivotinje #left-arrow::after {
   content: "";
@@ -372,7 +377,6 @@ height: 45px;
   transform: rotate(315deg) translate(2px, -8px);
   background: white;
 }
-
 
 .prikaz-zivotinje #right-arrow::after {
   content: "";
@@ -395,7 +399,7 @@ height: 45px;
   display: block;
 }
 
-.prikaz-zivotinje #staticblock{
+.prikaz-zivotinje #staticblock {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -406,7 +410,7 @@ height: 45px;
 .prikaz-zivotinje #zivotinja {
   background: white;
   display: grid;
-  grid-template-rows:auto auto;
+  grid-template-rows: auto auto;
   grid-template-columns: auto auto;
   width: 350px;
   min-height: 333px;
@@ -415,8 +419,6 @@ height: 45px;
   border: solid 2px black;
   padding: 8px;
 }
-
-
 
 .prikaz-zivotinje #zivotinja img {
   width: 180px;
@@ -460,12 +462,12 @@ height: 45px;
   margin: 0 auto;
 }
 
-#post #unos label{
+#post #unos label {
   display: flex;
   flex-direction: column;
 }
 
-#post #unos label{
+#post #unos label {
   width: 200px;
   margin: 10px;
 }
@@ -475,7 +477,7 @@ height: 45px;
   grid-row-start: 2;
 }
 
-#post #unos label:nth-child(2) div{
+#post #unos label:nth-child(2) div {
   display: flex;
 }
 
@@ -488,37 +490,38 @@ height: 45px;
 }
 
 #post #unos label:nth-child(2) div label:nth-child(1) {
-margin-left: 0;
+  margin-left: 0;
 }
 
-#post #unos label:nth-child(3)  {
+#post #unos label:nth-child(3) {
   grid-column-start: 2;
   grid-row-start: 2;
 }
 
-#post #unos label:nth-child(4)  {
+#post #unos label:nth-child(4) {
   grid-column-start: 2;
   grid-row-start: 3;
 }
 
-#post #unos label:nth-child(5)  {
+#post #unos label:nth-child(5) {
   grid-column-start: 1;
   grid-row-start: 3;
 }
 
-#post #unos label:nth-child(7)  {
+#post #unos label:nth-child(7) {
   grid-column-start: 2;
   grid-row-start: 1;
 }
 
-#post #unos label input{
+#post #unos label input {
   margin-top: 3px;
 }
 
-#post #unos label:nth-child(2) , #post #unos label:nth-child(3)   {
+#post #unos label:nth-child(2),
+#post #unos label:nth-child(3) {
   width: max-content;
   display: flex;
-  align-items: flex-start;  
+  align-items: flex-start;
 }
 
 #post #unos label:nth-child(6) {
@@ -532,15 +535,12 @@ margin-left: 0;
   grid-column-start: 1;
   grid-column-end: span 2;
   grid-row-start: 5;
-  width:100px;
+  width: 100px;
 }
-
-
-
 
 /* PUT UNOS */
 
-#put{
+#put {
   width: 330px;
 }
 
@@ -555,59 +555,59 @@ margin-left: 0;
   padding: 0 5px;
 }
 
-#put #unos label input{
-width: 100%;
-margin: 2px;
+#put #unos label input {
+  width: 100%;
+  margin: 2px;
 }
 
-#put #unos label:nth-child(2){
+#put #unos label:nth-child(2) {
   grid-column-start: 1;
   grid-row-start: 3;
 }
 
-#put #unos label:nth-child(3) div{
+#put #unos label:nth-child(3) div {
   display: flex;
   align-items: flex-end;
 }
 
-#put #unos label:nth-child(3) div label{
-margin: 0 3px;
-gap: 0;
+#put #unos label:nth-child(3) div label {
+  margin: 0 3px;
+  gap: 0;
 }
 
-#put #unos label:nth-child(3){
+#put #unos label:nth-child(3) {
   grid-column-start: 1;
   grid-row-start: 2;
   gap: 10px;
 }
 
-#put #unos label:nth-child(4){
+#put #unos label:nth-child(4) {
   grid-column-start: 1;
   grid-row-start: 5;
 }
 
-#put #unos label:nth-child(4) input, #put #unos label:nth-child(9) input{
+#put #unos label:nth-child(4) input,
+#put #unos label:nth-child(9) input {
   width: min-content;
 }
 
-
-#put #unos label:nth-child(5){
+#put #unos label:nth-child(5) {
   grid-column-start: 2;
   grid-row-start: 3;
 }
 
-#put #unos label:nth-child(6){
+#put #unos label:nth-child(6) {
   grid-column-start: 1;
   grid-row-start: 4;
 }
 
-#put #unos label:nth-child(7){
+#put #unos label:nth-child(7) {
   grid-column-start: 1;
   grid-row-start: 6;
-  }
+}
 
-#put #unos label:nth-child(7) textarea{
-height: 20px;
+#put #unos label:nth-child(7) textarea {
+  height: 20px;
 }
 
 #put #unos label:nth-child(9) {
@@ -643,27 +643,26 @@ height: 20px;
   margin: 20px 0px 30px;
 }
 
-#filters-holder{
+#filters-holder {
   display: flex;
   gap: 30px;
   flex-direction: row;
 }
 
-#filtri input[type="text"]{
+#filtri input[type="text"] {
   max-height: 20px;
 }
 
-#filter{
+#filter {
   display: flex;
   flex-direction: column;
   width: 80px;
 }
 
-#filter label{
+#filter label {
   display: flex;
   justify-content: space-between;
 }
-
 
 /* OBAVIJEST */
 
@@ -678,7 +677,7 @@ height: 20px;
   min-height: 0;
 }
 
-#obavijest-admin.active{
+#obavijest-admin.active {
   min-height: 280px;
 }
 
@@ -697,7 +696,7 @@ height: 20px;
 
 #obavijest-admin form.active {
   transform: translate(0px, 0px);
-  position: relative ;
+  position: relative;
 }
 
 #show-noti {
@@ -707,26 +706,25 @@ height: 20px;
   margin: 0 auto;
 }
 
-
-#obavijest-admin form textarea{
-max-width:380px ;
-max-height: 250px;
-min-width: 210px;
-min-height: 40px;
+#obavijest-admin form textarea {
+  max-width: 380px;
+  max-height: 250px;
+  min-width: 210px;
+  min-height: 40px;
 }
 
-#obavijest-admin form label{
+#obavijest-admin form label {
   width: 100%;
-  }  
-
-#obavijest-admin form input[type="text"]{
-width: 100%;
-}  
-
-#obavijest-admin form h4{
-margin: 0;
 }
-  
+
+#obavijest-admin form input[type="text"] {
+  width: 100%;
+}
+
+#obavijest-admin form h4 {
+  margin: 0;
+}
+
 #notification-block {
   border: solid 1px;
   background: whitesmoke;
@@ -752,33 +750,31 @@ margin: 0;
   border-bottom: solid 1px black;
 }
 
-#notification-block h4{
+#notification-block h4 {
   padding: 10px;
   margin: 0;
 }
 
-#notification-block p{
+#notification-block p {
   background: whitesmoke;
   margin: 0;
   padding: 25px;
 }
 
-#notification-block button{
+#notification-block button {
   position: relative;
   left: calc(100% - 61px);
   margin: 5px;
 }
 
-
-
 /* DONACIJE */
 
-#donacije{
-  max-width: 700px;
+#donacije {
+  max-width: 750px;
   margin: 0 auto;
 }
 
-#donacije div:first-child{
+#donacije div:first-child {
   background: whitesmoke;
   padding: 20px;
   border: solid 1px;
@@ -786,45 +782,147 @@ margin: 0;
   margin-bottom: 100px;
 }
 
-#donacije form label{
-margin: 0 5px;
+#donacije div:first-child form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-#donacije div:first-child h4{
-text-transform: uppercase;
+#donacije div:first-child form label {
+  display: flex;
+  align-items: center;
+  width: 210px;
+  justify-content: flex-start;
+  gap: 3px;
 }
 
-#donacije table tr{
-text-align: center;
+#donacije form label {
+  margin: 0px 5px;
 }
 
-#tables{
+#donacije form label input {
+  margin: 10px 0;
+}
+
+#donacije div:first-child h4 {
+  text-transform: uppercase;
+}
+
+#donacije table tr {
+  text-align: center;
+}
+
+#tables {
   border: solid 2px gray;
   padding: 12px;
   margin: 30px 0;
 }
 
-table{
+table {
   display: grid;
   margin: 30px 0;
 }
 
 thead tr {
   display: grid;
-  grid-template-columns: 107px 107px 33vw auto auto;
+  grid-template-columns: 107px 107px minmax(33%, 330px) min-content min-content;
   width: 100%;
 }
 
 tbody tr {
   display: grid;
-  grid-template-columns: 107px 107px 33vw fit-content(50%) fit-content(50%);
+  grid-template-columns: 107px 107px minmax(33%, 330px) fit-content(50%) fit-content(
+      50%
+    );
   width: 100%;
 }
 
-tr td{
+tr td {
   border: solid 1px;
 }
 
-tr th{
+tr th {
   border: solid 1px;
+}
+
+@media only screen and (max-width: 840px) {
+  .mainbody.active {
+    transform: unset;
+    width: 100%;
+  }
+
+  #sidebar.active {
+    width: 200px;
+  }
+
+  #sidebar {
+    background-color: rgb(245, 245, 245, 0.7);
+    z-index: 1;
+  }
+
+  header div {
+    gap: 0px 8px;
+  }
+
+  thead tr {
+    grid-template-columns: 107px 107px 107px min-content min-content;
+  }
+
+  tbody tr {
+    grid-template-columns: 107px 107px 107px min-content min-content;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #post #unos {
+    display: block;
+  }
+
+  table {
+    margin: 30px 0 50px;
+    grid-template-columns: 1fr 4fr;
+    justify-items: start;
+    width: fit-content;
+  }
+
+  table tbody {
+    width: -webkit-fill-available;
+  }
+
+  thead tr {
+    grid-template-columns: 1fr;
+    width: 90px;
+  }
+
+  tbody tr {
+    grid-template-columns: auto;
+    position: relative;
+  }
+
+  tbody tr td:nth-child(5) {
+    grid-column-start: 3;
+    position: absolute;
+    bottom: -23px;
+    right: 57px;
+    border: 0;
+  }
+
+  tbody tr td:nth-child(4) {
+    grid-column-start: 3;
+    position: absolute;
+    bottom: -23px;
+    right: 0;
+    border: 0;
+  }
+
+  #obavijest-admin{
+    grid-template-rows: 1fr 3fr;
+    grid-template-columns: auto;
+}
+}
+
+@media only screen and (max-width: 450px) {
+  header h3 {
+    display: none;
+  }
 }

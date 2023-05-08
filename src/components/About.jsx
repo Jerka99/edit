@@ -29,6 +29,9 @@ const About = () => {
         <h3>Lorem Ipsum</h3>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus iste magni eum! Quae ipsam corrupti excepturi possimus quis
            quia at eaque soluta exercitationem, et maxime incidunt in eligendi iste necessitatibus.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus iste magni eum! Quae ipsam corrupti excepturi possimus quis
+           quia at eaque soluta exercitationem, et maxime incidunt in eligendi iste necessitatibus.</p>
+
        </div>
 
       <div id='location'>
@@ -41,7 +44,7 @@ const About = () => {
       <h3>Kontakt</h3>
 
       <form onSubmit={handleSubmit}>
-        <label>Email</label><input type="text" name="email" value={kontakt.email} onChange={contactFun}/>
+        <label>Email</label><input required type="text" name="email" value={kontakt.email} onChange={contactFun}/>
         <label>Poruka</label><textarea required type="text" name="poruka" value={kontakt.poruka} onChange={contactFun}/>
 
         <button type='submit'>Pošalji</button>
