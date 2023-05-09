@@ -48,7 +48,7 @@ function App() {
           setSidebar={setSidebar}
           setDisplaySign={setDisplaySign}
         />
-        <div className={`mainbody ${sidebar ? "active" : ""}`}>
+        <div onTouchStart={()=>setSidebar(false)} className={`mainbody ${sidebar ? "active" : ""}`}>
           <Routes>
             <Route path="/" element={<About />} />
             <Route path="/popis" element={<Popis />} />

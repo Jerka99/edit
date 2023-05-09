@@ -269,15 +269,15 @@ button {
 }
 
 #about #form form label {
-  width: 72%;
+  width: 500px;
   margin: 0 auto;
 }
 
-#about #form form input,
-#about #form form textarea {
-  width: 70%;
-  margin: 30px auto;
-  min-width: 210px;
+#about #form form input, #about #form form textarea {
+    width: 70%;
+    margin: 10px auto 30px;
+    min-width: 210px;
+    max-width: 450px;
 }
 
 #about #form form textarea {
