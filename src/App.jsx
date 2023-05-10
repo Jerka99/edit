@@ -19,6 +19,7 @@ function App() {
 
   console.log(auth.currentUser);
 
+
   const checker = (x) => {
     setUser(x)
   };

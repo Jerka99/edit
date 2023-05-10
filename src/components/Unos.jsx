@@ -28,6 +28,8 @@ const handleSubmit = (e) =>{
     } 
 
 
+
+
   return (
     <div id={prop}>
       {prop == "post" && <h2 className='title'>Unos</h2> }
@@ -36,16 +38,16 @@ const handleSubmit = (e) =>{
         currentTarget.onerror = null;
         currentTarget.src=`${vrsta}.jpg`
       }} alt="" />}
-        <label >Ime<input required={prop == "post" ? true : false} value={UnosState.ime } onChange={unosFun} type="text" name="ime"/></label>
+        <label >Ime<input required value={UnosState.ime } onChange={unosFun} type="text" name="ime"/></label>
 
         <label >Vrsta 
         <div>
           <label >Pas
-        <input required={prop == "post" ? true : false} onChange={unosFun} value={"pas"} checked={"pas" == UnosState.vrsta} type="radio" name="vrsta"/></label>
+        <input required onChange={unosFun} value={"pas"} checked={"pas" == UnosState.vrsta} type="radio" name="vrsta"/></label>
         <label>Mačka
-        <input required={prop == "post" ? true : false} onChange={unosFun} value={"macka"} checked={"macka" == UnosState.vrsta} type="radio" name="vrsta"/></label>
+        <input required onChange={unosFun} value={"macka"} checked={"macka" == UnosState.vrsta} type="radio" name="vrsta"/></label>
         <label >Papiga
-        <input required={prop == "post" ? true : false} onChange={unosFun} value={"papiga"} checked={"papiga" == UnosState.vrsta} type="radio" name="vrsta"/></label>
+        <input required onChange={unosFun} value={"papiga"} checked={"papiga" == UnosState.vrsta} type="radio" name="vrsta"/></label>
         </div>
         </label>
 
@@ -55,10 +57,15 @@ const handleSubmit = (e) =>{
 
         <label >Godine<input required={prop == "post" ? true : false} min={0} onChange={unosFun} value={UnosState.godine} type="number" name="godine"/></label>
 
-        <label >Opis<textarea onChange={unosFun} value={UnosState.opis} name="opis" id="" cols="30" rows="10" maxLength="50"></textarea></label>
+        <label >Opis<textarea onChange={unosFun} value={UnosState.opis} name="opis" id="" cols="30" rows="10" maxLength="30"></textarea></label>
 
         <label >Slika:<input placeholder="URL" onChange={unosFun} value={UnosState.slika} type="text" name='slika' /></label>
         
+        {prop == "post" && <label ><img src={UnosState.slika || `${UnosState.vrsta}.jpg`}  onError={({currentTarget})=>{
+        currentTarget.onerror = null;
+        currentTarget.src=`${UnosState.vrsta}.jpg` || ""
+      }} alt="" /></label>}
+
         {prop == "put" &&<label >Udomljen<input onChange={unosFun} value={UnosState.udomljen} checked={UnosState.udomljen} type="checkbox" name='udomljen' /></label>}
 
         {prop == "post" && <button type='submit'>Spremi</button>}

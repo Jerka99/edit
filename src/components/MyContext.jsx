@@ -86,13 +86,19 @@ export const MyContextComp = ({ children, checker }) => {
       .then((res) => {
        return updateProfile(auth.currentUser, { displayName: name });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {console.error(error);
+      if(error.code == "auth/email-already-in-use"){
+        alert("Email already in use")}
+    })
   };
 
   const logInUser = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => console.log(userCredential))
-      .catch((error) => console.error(error));
+      .catch((error) => {console.error(error.code)
+        if(error.code == "auth/user-not-found"){
+          alert("User-not-found")}
+      });
   };
 
   const signOutFun = () => {

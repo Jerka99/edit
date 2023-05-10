@@ -20,10 +20,11 @@ const About = () => {
     postInBase(kontakt, "contactCollectionRef")
     setKontakt({email:"",poruka:""})
   }
+  
 
   return (
     <div id='about'>
-       <h1>About</h1>
+       <h1 className="title">About</h1>
        <img src="building.jpg" alt="" />
        <div id='lorem1'>
         <h3>Lorem Ipsum</h3>
@@ -44,7 +45,7 @@ const About = () => {
       <h3>Kontakt</h3>
 
       <form onSubmit={handleSubmit}>
-        <label>Email</label><input required type="text" name="email" value={kontakt.email} onChange={contactFun}/>
+        <label>Email<input required type="text" name="email" value={kontakt.email} onChange={contactFun}/></label>
         <label>Poruka</label><textarea required type="text" name="poruka" value={kontakt.poruka} onChange={contactFun}/>
 
         <button type='submit'>Pošalji</button>

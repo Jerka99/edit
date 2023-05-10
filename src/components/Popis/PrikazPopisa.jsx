@@ -1,3 +1,4 @@
+import capitalize from "../capitalize";
 
 const PrikazPopisa = ({vrsta, ime, slika, toggleFunction, index}) => {
 
@@ -9,7 +10,7 @@ const PrikazPopisa = ({vrsta, ime, slika, toggleFunction, index}) => {
         currentTarget.onerror = null;
         currentTarget.src=`${vrsta}.jpg`
       }} alt="" />
-        <p>{vrsta} {ime}</p>
+        <b>{vrsta} {capitalize(ime)}</b>
 
         
       </div>

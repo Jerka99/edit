@@ -4,11 +4,11 @@
 
 body {
   margin: 0;
+  font-family: system-ui;
 }
 
 header {
-  background: whitesmoke;
-  position: sticky;
+  background: linear-gradient(300deg, rgba(255,255,255,1) 0%, rgba(181,182,181,0.7528186274509804) 100%, rgba(225,252,255,1) 100%, rgba(255,255,255,1) 100%);  position: sticky;
   top: 0;
   z-index: 1;
   height: 32px;
@@ -67,8 +67,7 @@ header h3 {
 #sidebar {
   width: 0px;
   height: -webkit-fill-available;
-  background-color: whitesmoke;
-  position: fixed;
+  background: linear-gradient(300deg, rgba(255,255,255,1) 0%, rgba(181,182,181,0.7528186274509804) 100%, rgba(225,252,255,1) 100%, rgba(255,255,255,1) 100%);  position: fixed;
   left: 0;
   transition: all 0.3s ease-in-out;
   border-right: solid 1px;
@@ -145,7 +144,7 @@ header h3 {
   width: calc(100%);
   padding: 30px;
   min-height: 100vh;
-}
+  background: linear-gradient(300deg, rgba(255,255,255,1) 0%, rgba(213,213,213,0.9528186274509804) 100%, rgba(225,252,255,1) 100%, rgba(255,255,255,1) 100%);}
 
 .mainbody #popis-box {
   max-width: 1000px;
@@ -230,58 +229,79 @@ header h3 {
 .title {
   text-align: center;
   margin-top: 0;
+  padding: 6px 0;
+  border-bottom: solid;
 }
-
 button {
   cursor: pointer;
+  background: white;
+  border: solid 1px gray;
+  border-radius: 4px;
 }
 
 /* ABOUT */
 
-#about img {
+#about h1 + img {
+  width:calc(100% + 60px);
+  position: relative;
+  left: -30px;
+  display: block;
+}
+
+#about a img {
   width: 100%;
+  border: solid 1px gray;
 }
 
 #about #lorem1 {
-  background: whitesmoke;
   padding: 10px;
   max-width: 1000px;
-  margin: 50px auto;
+  margin: 100px auto;
+  background: white;
+  border: solid 1px gray;
+  border-radius: 5px;
 }
 
 #about #location {
-  padding: 12px;
-  background: whitesmoke;
   max-width: 1000px;
   margin: 0 auto;
+  background: white;
+  border: solid 1px gray;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 #about #form form {
   display: flex;
   flex-direction: column;
-}
-
-#about #form {
-  background: whitesmoke;
-  padding: 30px;
-  max-width: 1000px;
-  margin: 50px auto;
-}
-
-#about #form form label {
-  width: 500px;
+  max-width: 550px;
   margin: 0 auto;
 }
 
+#about #form {
+  padding: 30px;
+  max-width: 650px;
+  margin: 100px auto;
+  background: white;
+  border: solid 1px gray;
+  border-radius: 5px;
+}
+
 #about #form form input, #about #form form textarea {
-    width: 70%;
-    margin: 10px auto 30px;
-    min-width: 210px;
-    max-width: 450px;
+  margin: 1px 0 30px;
+  width: 100%;
 }
 
 #about #form form textarea {
   height: 100px;
+}
+
+#about h3{
+  border-bottom: solid 4px;
+    padding: 0 0 5px 0px;
+    text-align: center;
+    max-width: 250px;
+    margin: 0 auto 25px;
 }
 
 #about #form form button {
@@ -322,14 +342,18 @@ footer h2 + div {
 .popis .element-popisa {
   width: 175px;
   display: flex;
-  background: whitesmoke;
-  border: solid 1px black;
+  border: solid 1px grey;
   border-radius: 10px;
+  background: white;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 7px;
   cursor: pointer;
+}
+
+.popis .element-popisa b{
+  margin: 7px 0 4px;
 }
 
 .popis .element-popisa img {
@@ -493,11 +517,14 @@ footer h2 + div {
 #post #unos label:nth-child(3) {
   grid-column-start: 2;
   grid-row-start: 2;
+  justify-content: center;
+
 }
+
 
 #post #unos label:nth-child(4) {
   grid-column-start: 2;
-  grid-row-start: 3;
+  grid-row-start: 1;
 }
 
 #post #unos label:nth-child(5) {
@@ -505,18 +532,29 @@ footer h2 + div {
   grid-row-start: 3;
 }
 
+#post #unos label:nth-child(6) textarea{
+  max-width: 200px;
+  max-height: 150px;
+}
+
 #post #unos label:nth-child(7) {
   grid-column-start: 2;
-  grid-row-start: 1;
+  grid-row-start: 3;
 }
+
+#post #unos label:nth-child(8) {
+  grid-column-start: 2;
+  grid-row-start: 4;
+}
+
+
 
 #post #unos label input {
   margin-top: 3px;
 }
 
-#post #unos label:nth-child(2),
-#post #unos label:nth-child(3) {
-  width: max-content;
+#post #unos label:nth-child(2), #post #unos label:nth-child(3) {
+  max-width: max-content;
   display: flex;
   align-items: flex-start;
 }
@@ -637,13 +675,17 @@ footer h2 + div {
   gap: 30px;
   align-items: center;
   justify-content: space-around;
-  margin: 20px 0px 30px;
+  margin: 30px 0px;
 }
 
 #filters-holder {
   display: flex;
   gap: 30px;
   flex-direction: row;
+  background: white;
+  padding: 20px;
+  border: solid 1px gray;
+  border-radius: 5px;
 }
 
 #filtri input[type="text"] {
@@ -654,6 +696,17 @@ footer h2 + div {
   display: flex;
   flex-direction: column;
   width: 80px;
+}
+
+#filtri h3{
+    margin: 0 0 10px;
+}
+
+#filtri:first-child{
+  background: white;
+  padding: 20px;
+  border: solid 1px gray;
+  border-radius: 5px;
 }
 
 #filter label {
@@ -682,6 +735,7 @@ footer h2 + div {
   display: flex;
   position: absolute;
   flex-direction: column;
+  background: white;
   border: solid 1px black;
   padding: 10px;
   border-radius: 10px;
@@ -820,9 +874,11 @@ footer h2 + div {
 }
 
 #tables {
-  border: solid 2px gray;
+  border: solid 1px gray;
   padding: 12px;
   margin: 30px 0;
+  background: white;
+  border-radius: 5px;
 }
 
 table {
@@ -863,8 +919,7 @@ tr th {
   }
 
   #sidebar {
-    background-color: rgb(245, 245, 245, 0.7);
-    z-index: 1;
+    background: linear-gradient(300deg, rgba(255,255,255,1) 0%, rgba(181,182,181,0.7528186274509804) 100%, rgba(225,252,255,1) 100%, rgba(255,255,255,1) 100%);    z-index: 1;
   }
 
   header div {
@@ -940,4 +995,53 @@ tr th {
   #post #unos label:nth-child(2) div label {
     margin: 21px 3px;
 }
+
+.prikaz-zivotinje #zivotinja {
+  width: 75%;
+}
+
+.prikaz-zivotinje #zivotinja img {
+  width: 160px;
+  height: 160px;
+}
+
+.prikaz-zivotinje #zivotinja img + div + div {
+  margin: 0 0px 14px 0;
+}
+
+.prikaz-zivotinje #zivotinja img + div {
+  max-width: 136px;
+}
+
+.prikaz-zivotinje #zivotinja img + div + div {
+  max-width: 110px;
+}
+
+#put #unos label:nth-child(7) {
+  grid-column-start: 1;
+  grid-row-start: 7;
+}
+
+#put #unos label:nth-child(5) {
+  grid-column-start: 1;
+  grid-row-start: 6;
+}
+
+#delete-animal {
+  right: 50px;
+}
+
+#put #unos button[type="submit"] {
+  right: 50px;
+}
+
+#put #unos label:nth-child(8){
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  top: 50px;
+  max-width: 95px;
+  max-height: 50px;
+}
+
 }

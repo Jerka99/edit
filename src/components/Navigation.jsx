@@ -1,20 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Bars from "../button/buttonbars";
 import { useContextComp } from "./MyContext";
 import { useState } from "react";
+import capitalize from "./capitalize";
 
 export default function Navigation({sidebar, setSidebar, setDisplaySign}) {
  
-const {authUser, name, signOutFun, logInUser} = useContextComp().auth
-const [currentUser, setCurrentUser] = useState("default@gmail.com")
+const {authUser, name, signOutFun, logInUser} = useContextComp().auth;
+const [currentUser, setCurrentUser] = useState("default@gmail.com");
+const navigate = useNavigate();
 
 const changeUser = () =>{
   if(authUser.displayName !== "admin"){
     setCurrentUser(authUser.email)
     logInUser("admin@gmail.com", "123456")
   }
-  else
+  else{
     logInUser(currentUser ?? "default@gmail.com", "123456")
+    window.location.href.substring(window.location.href.length - 4) == "unos" && navigate("/")
+  }
+
 }
 
   return (
@@ -25,7 +30,7 @@ const changeUser = () =>{
         </div>
         <h3>Azil za životinje</h3></div>
         <div>
-        {authUser ? <p>signed in as {authUser.displayName ? authUser.displayName : name}</p> : null}
+        {authUser ? <p>signed in as {authUser.displayName ? capitalize(authUser.displayName) : capitalize(name)}</p> : null}
           <div className={`user-changer ${authUser.email == "admin@gmail.com" ? "active" : ""}`} 
           onClick={()=>changeUser()}>
             </div>
