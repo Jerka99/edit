@@ -7,7 +7,7 @@ import capitalize from "./capitalize";
 export default function Navigation({sidebar, setSidebar, setDisplaySign}) {
  
 const {authUser, name, signOutFun, logInUser} = useContextComp().auth;
-const [currentUser, setCurrentUser] = useState("default@gmail.com");
+const [currentUser, setCurrentUser] = useState("guest@gmail.com");
 const navigate = useNavigate();
 
 const changeUser = () =>{
@@ -16,7 +16,7 @@ const changeUser = () =>{
     logInUser("admin@gmail.com", "123456")
   }
   else{
-    logInUser(currentUser ?? "default@gmail.com", "123456")
+    logInUser(currentUser ?? "guest@gmail.com", "123456")
     window.location.href.substring(window.location.href.length - 4) == "unos" && navigate("/")
   }
 
