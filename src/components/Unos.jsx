@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useContextComp } from "./MyContext"
+import capitalize from "./capitalize"
 
 const Unos = ({setChange, prop, vrsta, ime, slika, godine, cip, opis, pregled, udomljen, id}) => {
 const {postInBase, deleteFromBase, changeInfo} = useContextComp().base;
@@ -27,41 +28,100 @@ const handleSubmit = (e) =>{
       }}
     } 
 
+    const inputs = [
+      {
+      id:1,
+      type:"text",
+      name:"ime",
+      required:true,
+      value:UnosState.ime,
+      },
+      {id:2,
+        pas:{
+      type:"radio",
+      name:"vrsta",
+      value:"pas",
+      checked:"pas" == UnosState.vrsta ? true : false,       
+        },
+        macka:{
+      type:"radio",
+      name:"vrsta",
+      value:"macka",
+      checked:"macka" == UnosState.vrsta ? true : false,
+        },
+        papiga:{
+      type:"radio",
+      name:"vrsta",
+      value:"papiga",
+      checked:"papiga" == UnosState.vrsta ? true : false,
+        }
+      },
+     {
+      id:3,
+      type:"checkbox",
+      name:'cip',
+      value:UnosState.cip,
+      checked:UnosState.cip,
+     },
+     {
+      id:4,
+      type:"date",
+      name:'pregled',
+      value:UnosState.pregled,
+     },
+     {
+      id:5,
+      type:"number",
+      name:"godine",
+      value:UnosState.godine,
+      required:prop == "post" ? true : false,
+      min:0
+     },
+     {
+      id:6,
+      value:UnosState.opis,
+      name:"opis",
+      cols:"30",
+      rows:"10",
+      maxLength:"30"
+     },
+     {
+      id:7,
+      type:"text",
+      name:'slika',
+      placeholder:"URL",
+      value:UnosState.slika
+     }
+
+    ]
+
+    
+console.log(UnosState)
 
 
 
   return (
     <div id={prop}>
       {prop == "post" && <h2 className='title'>Unos</h2> }
+      
       <form onSubmit={handleSubmit} id='unos' >
         { prop == "put" && <img src={UnosState.slika || `${UnosState.vrsta}.jpg`}  onError={({currentTarget})=>{
         currentTarget.onerror = null;
-        currentTarget.src=`${vrsta}.jpg`
+        currentTarget.src=`${UnosState.vrsta}.jpg`
       }} alt="" />}
-        <label >Ime<input required value={UnosState.ime } onChange={unosFun} type="text" name="ime"/></label>
 
-        <label >Vrsta 
-        <div>
-          <label >Pas
-        <input required onChange={unosFun} value={"pas"} checked={"pas" == UnosState.vrsta} type="radio" name="vrsta"/></label>
-        <label>Mačka
-        <input required onChange={unosFun} value={"macka"} checked={"macka" == UnosState.vrsta} type="radio" name="vrsta"/></label>
-        <label >Papiga
-        <input required onChange={unosFun} value={"papiga"} checked={"papiga" == UnosState.vrsta} type="radio" name="vrsta"/></label>
-        </div>
-        </label>
+      {inputs.map(el=>{
+              if(el.id > 1 && el.id <3){
+                return <label key={el.id}>Vrsta<div> {Object.entries(inputs[1]).map((el ,index)=>{if(index > 0){return <label key={index}>{capitalize(el[0])}<input {...el[1]} onChange={unosFun}/></label>}})}</div></label>
+              }
+              else if(el.id == 6){
+                return <label key={el.id}>{capitalize(el.name)} <textarea {...el} onChange={unosFun}></textarea> </label>
+              }
+              return <label key={el.id}>{capitalize(el.name)} <input {...el} onChange={unosFun}/> </label>
+      })}
 
-        <label >Čipiran<input onChange={unosFun} value={UnosState.cip} checked={UnosState.cip} type="checkbox" name='cip' /></label>
-
-        <label >Pregled:<input onChange={unosFun} value={UnosState.pregled} type="date" name='pregled' /></label>
-
-        <label >Godine<input required={prop == "post" ? true : false} min={0} onChange={unosFun} value={UnosState.godine} type="number" name="godine"/></label>
-
-        <label >Opis<textarea onChange={unosFun} value={UnosState.opis} name="opis" id="" cols="30" rows="10" maxLength="30"></textarea></label>
-
-        <label >Slika:<input placeholder="URL" onChange={unosFun} value={UnosState.slika} type="text" name='slika' /></label>
-        
-        {prop == "post" && <label ><img src={UnosState.slika || `${UnosState.vrsta}.jpg`}  onError={({currentTarget})=>{
+        {prop == "post" && <label >
+        <img src={UnosState.slika || `${UnosState.vrsta}.jpg`}  onError={({currentTarget})=>{
         currentTarget.onerror = null;
         currentTarget.src=`${UnosState.vrsta}.jpg` || ""
       }} alt="" /></label>}

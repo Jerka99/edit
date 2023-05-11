@@ -23,7 +23,7 @@ const Filter = ({ animalsList, info, filterFun, filter }) => {
           .reduce((a, v) => ({ ...a, [v]: v }), {})
       ).map((el) => (
         <label key={el}>
-          {el}
+          {el == "true" ? "Udomljen" : el == "false" ? "Nije udomljen" : el}
           <input
             type="radio"
             name={info}

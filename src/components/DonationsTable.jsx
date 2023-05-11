@@ -29,7 +29,7 @@ const DonationsTable = ({donations, kategorija}) => {
           <td>{donation.opis}</td>
           {(authUser.displayName == "admin" && kategorija == "trazimo") && <td><button onClick={()=>deleteFromBase(donation.id, "donations")}>Izbriši</button></td>}
           {(authUser.displayName == "admin" && kategorija == "trazimo") && <td><button onClick={()=>changeInfo(donation.id,{kategorija:"donirano"},"donations")}>Donirano</button></td>}
-          {(authUser.displayName !== "admin" && kategorija == "trazimo") && <td><button onClick={()=>changeInfo(donation.id,{kategorija:"donirano"},"donations")}>Doniraj</button></td>}
+          {(authUser.displayName !== "admin" && kategorija == "trazimo") && <td><button onClick={()=>{ authUser ? changeInfo(donation.id,{kategorija:"donirano"},"donations") : alert("Niste prijavljeni!")}}>Doniraj</button></td>}
           {(authUser.displayName == "admin" && kategorija == "nudi se") && <td><button onClick={()=>changeInfo(donation.id,{kategorija:"donirano"},"donations")}>Prihvati</button></td>}
           {(authUser.displayName == "admin" && kategorija == "donirano") && <td><button onClick={()=>postInBase({tip:donation.tip, vrijednost:donation.vrijednost, opis:donation.opis, kategorija:"trazimo"}, "donationsCollectionRef")}>Ponovi</button></td>}
           {(authUser.displayName == "admin" && kategorija == "donirano") && <td><button onClick={()=>deleteFromBase(donation.id, "donations")}>Izbriši</button></td>}

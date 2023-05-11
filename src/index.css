@@ -695,7 +695,7 @@ footer h2 + div {
 #filter {
   display: flex;
   flex-direction: column;
-  width: 80px;
+  width: 125px;
 }
 
 #filtri h3{

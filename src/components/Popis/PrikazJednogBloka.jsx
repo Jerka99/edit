@@ -7,7 +7,6 @@ const PrikazJednogBloka = ({id, vrsta ,setChange, ime, slika, godine, udomljen, 
     const {authUser} = useContextComp().auth;
     const {changeInfo} = useContextComp().base;
 
-    
   return (
     <div className={`prikaz-zivotinje ${toggleAnimalInfo ? "active" : ""}`}>
       <div id='staticblock'>
@@ -15,7 +14,7 @@ const PrikazJednogBloka = ({id, vrsta ,setChange, ime, slika, godine, udomljen, 
     <div id='zivotinja'>
       <button id='close' onClick={()=>setToggleAnimalInfo(false)}>✖</button>
   
-  <img src={slika} onError={({currentTarget})=>{
+  <img src={slika || `${vrsta}.jpg`} onError={({currentTarget})=>{
   currentTarget.onerror = null;
   currentTarget.src=`${vrsta}.jpg`
   }} alt="" />  <div>
@@ -27,7 +26,7 @@ const PrikazJednogBloka = ({id, vrsta ,setChange, ime, slika, godine, udomljen, 
   <p>Opis:{opis}</p>
   </div>
   <div>
-      <button disabled={udomljen ? true : false} onClick={()=>changeInfo(id, {udomljen:true}, "animals")}>{udomljen ? "Udomljen" : "Udomi"}</button>
+      <button disabled={udomljen ? true : false} onClick={()=>{authUser ? changeInfo(id, {udomljen:true}, "animals") : alert("Niste prijavljeni")}}>{udomljen ? "Udomljen" : "Udomi"}</button>
       {authUser.displayName == "admin" && <button onClick={()=>setChange(prev=>!prev)}>Uredi</button>}
     </div>
     </div>
