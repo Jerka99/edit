@@ -40,18 +40,21 @@ const handleSubmit = (e) =>{
         pas:{
       type:"radio",
       name:"vrsta",
+      required:true,
       value:"pas",
       checked:"pas" == UnosState.vrsta ? true : false,       
         },
         macka:{
       type:"radio",
       name:"vrsta",
+      required:true,
       value:"macka",
       checked:"macka" == UnosState.vrsta ? true : false,
         },
         papiga:{
       type:"radio",
       name:"vrsta",
+      required:true,
       value:"papiga",
       checked:"papiga" == UnosState.vrsta ? true : false,
         }
