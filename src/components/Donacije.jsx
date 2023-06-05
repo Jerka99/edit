@@ -24,9 +24,10 @@ console.log(tip)
 
   const donateForm = (e) =>{
     const {name, value} = e.target
-    setDonationState(prev=>({...prev, [name]:value, "kategorija":authUser.displayName == "admin" ? "trazimo" : "nudi se"}))
+    setDonationState(prev=>({...prev, [name]:value, "kategorija":authUser.email == "admin@gmail.com" ? "trazimo" : "nudi se"}))
   }
 
+  
   const sendInBase = (e) =>{
     console.log("eeee")
     e.preventDefault();
@@ -44,7 +45,7 @@ console.log(tip)
     <div id='donacije'>
       <div>
       <button onClick={()=>toggleBlock(prev=>!prev)}>Nova donacija</button>
-      <h4>{authUser.displayName == "admin" ? "Tražimo" : "Nudi se"}</h4>
+      <h4>{authUser.email == "admin@gmail.com" ? "Tražimo" : "Nudi se"}</h4>
       {block && <form onSubmit={sendInBase}>
       
       <label>Tip  <select required name='tip' value={donationState.tip} onChange={donateForm}><option value="">Izaberi</option>

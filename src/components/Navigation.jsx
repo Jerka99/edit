@@ -11,7 +11,7 @@ const [currentUser, setCurrentUser] = useState("guest@gmail.com");
 const navigate = useNavigate();
 
 const changeUser = () =>{
-  if(authUser.displayName !== "admin"){
+  if(authUser.email !== "admin@gmail.com"){
     setCurrentUser(authUser.email)
     logInUser("admin@gmail.com", "123456")
   }
@@ -43,7 +43,7 @@ const changeUser = () =>{
       <div id="sidebar" className={sidebar ? "active" : ""}>
         <ul>
           <li>
-            <Link to={`/`}>About</Link>
+            <Link to={`/`}>O nama</Link>
           </li>
           <li>
             <Link to={`popis`}>Popis</Link>
@@ -54,7 +54,7 @@ const changeUser = () =>{
           <li>
             <Link to={`obavijesti`}>Obavijesti</Link>
           </li>
-          {authUser.displayName == "admin" && <li>
+          {authUser.email == "admin@gmail.com" && <li>
             <Link to={`unos`}>Unos</Link>
           </li>}
         </ul>

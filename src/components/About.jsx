@@ -24,7 +24,7 @@ const About = () => {
 
   return (
     <div id='about'>
-       <h1 className="title">About</h1>
+       <h1 className="title">O nama</h1>
        <img src="building.jpg" alt="" />
        <div id='lorem1'>
         <h3>Lorem Ipsum</h3>

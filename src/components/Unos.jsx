@@ -126,7 +126,7 @@ console.log(UnosState)
         {prop == "post" && <label >
         <img src={UnosState.slika || `${UnosState.vrsta}.jpg`}  onError={({currentTarget})=>{
         currentTarget.onerror = null;
-        currentTarget.src=`${UnosState.vrsta}.jpg` || ""
+        currentTarget.src=`${UnosState.vrsta}.jpg`;
       }} alt="" /></label>}
 
         {prop == "put" &&<label >Udomljen<input onChange={unosFun} value={UnosState.udomljen} checked={UnosState.udomljen} type="checkbox" name='udomljen' /></label>}

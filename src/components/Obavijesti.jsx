@@ -49,7 +49,7 @@ const Obavijesti = () => {
 
   return (
     <div>
-      {authUser.displayName == "admin" && <div id="obavijest-admin" className={noti ? "active" : ""}>
+      {authUser.email == "admin@gmail.com" && <div id="obavijest-admin" className={noti ? "active" : ""}>
       <button id="show-noti" onClick={()=>newNoti(prev=>!prev)}>Nova obavijest</button> 
       <form className={noti ? "active" : ""} onSubmit={handleSubmit}>
       <label><h4>Naslov</h4><input required type="text" maxLength="20" name="naslov" value={notificationState.naslov} onChange={createNotification}/></label>
@@ -64,7 +64,7 @@ const Obavijesti = () => {
           return <div id="notification-block" key={notification.id}>
             <div id={notification.vazno ? "important" : "not-important"}><h4>{notification.naslov}</h4> <h4>{dateFun(notification.datum)}</h4></div>
             <p>{notification.tekst}</p>
-            {authUser.displayName == "admin" && <button onClick={()=>deleteFromBase(notification.id, "notifications")}>Izbriši</button>}
+            {authUser.email == "admin@gmail.com" && <button onClick={()=>deleteFromBase(notification.id, "notifications")}>Izbriši</button>}
            </div>
         })}
     </div>

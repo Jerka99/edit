@@ -6,7 +6,7 @@ const ProtectedRoute = ({children}) => {
 
   const {authUser} = useContextComp().auth;
 
-    if(authUser.displayName == "admin"){
+    if(authUser.email == "admin@gmail.com"){
         return children
     }
 
